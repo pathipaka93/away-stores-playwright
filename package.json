@@ -1,0 +1,21 @@
+{
+  "name": "away",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "pretest": "rm -rf ./reports ./allure-results ./allure-report",
+    "test": "npx playwright test --headed --project=chromium --reporter=line,allure-playwright",
+    "posttest": "allure generate ./allure-results --clean && allure open ./allure-report"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.29.0",
+    "allure-playwright": "*"
+  },
+  "dependencies": {
+    "allure-commandline": "^2.20.1"
+  }
+}
