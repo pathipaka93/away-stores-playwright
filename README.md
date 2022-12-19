@@ -6,7 +6,7 @@
 
 # Reporting Used
 
-- # allure-playwright
+- allure-playwright
 
 # Test Report
 
