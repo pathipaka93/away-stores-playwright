@@ -102,23 +102,24 @@ class AllStoresPage {
     await expect(this.getStoreCta(store.index)).toHaveText(storesData.seeStore);
   }
 
-  //TODO
   /**
-   * Verifies See store Animation
-   * @param {*} store
+   * Verifies See store Icon Animation
+   * @param {*} index
    */
-  async VerifyIconAnimation(store) {
-    await this.storesHeadline.hover();
-    await this.storesHeadline.scroll();
-    // await expect(this.getCtaIcon(1)).toBeVisible();
-    await this.getStoreModal(store.index).hover();
-    // await (this.icon).hover();
-    // await (this.getCtaIcon(1)).hover();
-
-    await expect(this.getCtaIcon(store.index)).toBeHidden();
-    // await expect(this.getCtaIcon(store.index)).toBeVisible();
-    await expect(this.getCtaIconAnimated(store.index)).toBeVisible();
-    await expect(this.getStoreCta(1)).toHaveText(storesData.seeStore);
+  async VerifyIconAnimation(index) {
+    const handle = await this.page.$('[class*="masthead_title"]'); // Move cursor to top on page
+    await handle.hover();
+    expect(this.page.locator('[class*="cta_animationExit"]')).toHaveCount(0); // check animated icon does not exist
+    const Iconhandle = await this.page.$$(
+      '[class*="copyContainer"] [class*="cta_iconRight"]'
+    );
+    await Iconhandle[index].hover(); // Move cursor to nth store modal icon
+    await expect(this.storesHeadline).toBeVisible();
+    expect(this.page.locator('[class*="cta_animationExit"]')).toHaveCount(1); // check 1 animated icon exist
+    let ctaIconAnimated = this.page
+      .locator('[class*="cta_animationExit"]')
+      .nth(index);
+    await expect(ctaIconAnimated).toBeVisible(); // Verify Cta Animated to be visible
   }
 
   /**

@@ -1,5 +1,6 @@
 const { test } = require("@playwright/test");
 const { Pages } = require("../pages/index");
+const urlsData = require("../data/urls");
 const storesData = require("../data/stores");
 const stores = storesData.stores;
 
@@ -19,7 +20,7 @@ for (const store of stores) {
     });
 
     test(`should verify store Page load for ${store.name} store script`, async () => {
-      await page.goto("https://www.awaytravel.com/stores", 100000);
+      await page.goto(urlsData.storesLandingPage, 100000);
       await allStoresPage.VerifyStoresTitle();
     });
 
@@ -32,10 +33,6 @@ for (const store of stores) {
         await allStoresPage.ClickStore(store.index);
         await storePage.VerifyStorePageLoaded();
       });
-    });
-
-    test.skip(`should verify stores cta animation ${store.name} store`, async () => {
-      await allStoresPage.VerifyIconAnimation(store);
     });
 
     test(`should verify store Additional information on ${store.name} store page`, async () => {

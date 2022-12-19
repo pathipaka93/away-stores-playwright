@@ -6,6 +6,7 @@
   "scripts": {
     "pretest": "rm -rf ./reports ./allure-results ./allure-report",
     "test": "npx playwright test --headed --project=chromium --reporter=line,allure-playwright",
+    "test-html": "npx playwright test --headed",
     "posttest": "allure generate ./allure-results --clean && allure open ./allure-report"
   },
   "keywords": [],

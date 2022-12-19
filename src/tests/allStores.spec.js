@@ -1,6 +1,6 @@
 const { test } = require("@playwright/test");
 const { Pages } = require("../pages/index");
-const storesData = require("../data/stores");
+const urlsData = require("../data/urls");
 
 test.describe(`should verify all Stores page`, async () => {
   test.describe.configure({ mode: "serial" });
@@ -18,7 +18,7 @@ test.describe(`should verify all Stores page`, async () => {
   });
 
   test(`should verify Away Home Page load`, async () => {
-    await page.goto("https://www.awaytravel.com/");
+    await page.goto(urlsData.homePage);
     await homePage.VerifyHomePageTitle();
   });
 
@@ -34,5 +34,9 @@ test.describe(`should verify all Stores page`, async () => {
 
   test("should verify store Modal tiles count", async () => {
     await allStoresPage.VerifyStoreCount();
+  });
+
+  test("should verify stores cta animation on second store", async () => {
+    await allStoresPage.VerifyIconAnimation(0);
   });
 });

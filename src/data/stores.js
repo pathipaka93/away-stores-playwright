@@ -3,6 +3,7 @@ const storesData = {
   storesPageTitle: "Stores | Away: Built for modern travel",
   storesHeadline: "Visit us IRL",
   seeStore: "See store",
+  // TODO : Adding additional store info will add scripts for the store script
   stores: [
     {
       index: "0",

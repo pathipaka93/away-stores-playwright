@@ -8,12 +8,15 @@ class HomePage {
   }
 
   /**
-   * Verifies All Stores Page Title and Headline
+   * Verifies Home Stores Page Title
    */
   async VerifyHomePageTitle() {
     await expect(this.page).toHaveTitle(storesData.homePageTitle);
   }
 
+  /**
+   * Verifies Stores link on Home Page
+   */
   async VerifyStoresLink() {
     await expect(this.storesLink).toHaveAttribute("href", "/stores");
     await this.storesLink.click();

@@ -103,6 +103,7 @@ class StorePage {
    * Verifies Gallery Component images and slide actions
    * @param {*} store
    */
+  // Gallery asertion Images are flacky
   async VerifyGallery(store) {
     await expect(this.gallerySection).toBeVisible();
     let imgLocators = await this.getGalleryImgs();
